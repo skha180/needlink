@@ -1,9 +1,41 @@
-asgiref==3.10.0
-Django==5.2.7
-django-cors-headers==4.9.0
-djangorestframework==3.16.1
-djangorestframework_simplejwt==5.5.1
-pillow==12.0.0
-PyJWT==2.10.1
-sqlparse==0.5.3
-tzdata==2025.2
+# Core Django framework
+Django>=4.2,<6.0
+
+# Production WSGI server for Django
+gunicorn
+
+# PostgreSQL database adapter
+psycopg2-binary
+
+# Easy database configuration from DATABASE_URL
+dj-database-url
+
+# Serve static files efficiently in production
+whitenoise
+
+# Environment variable loader (optional, for local .env use)
+python-dotenv
+
+# Handle Cross-Origin Resource Sharing (CORS) for API access (Android, frontend, etc.)
+django-cors-headers
+
+# Optional: for API features (if you're using Django REST Framework)
+djangorestframework
+
+# Optional: for environment variable parsing (alternative to python-dotenv)
+python-decouple
+
+# Optional: if using Pillow (for image uploads or thumbnails)
+Pillow
+
+# Optional: for form enhancements (remove if unused)
+django-crispy-forms
+
+# Optional: if you use Django REST Framework SimpleJWT for authentication
+djangorestframework-simplejwt
+
+# Optional: if using Markdown or other rich content features
+markdown
+
+# Optional: if you plan to use whitenoise compression
+brotli

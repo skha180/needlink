@@ -1,27 +1,39 @@
-# Python
+# ==============================
+# 🐍 Python
+# ==============================
 *.py[cod]
 *$py.class
 __pycache__/
 
-# Environments
+# ==============================
+# 🔐 Environments
+# ==============================
 .env
 .venv/
 env/
 venv/
 ENV/
 
-# Django
+# ==============================
+# 🧱 Django
+# ==============================
 db.sqlite3
 media/
-staticfiles/
+staticfiles/   # collectstatic output (auto-generated on deployment)
+# NOTE: We keep the /static/ folder for source assets (CSS, JS)
+# Do NOT ignore /static/, only /staticfiles/
 local_settings.py
 
-# Logs
+# ==============================
+# 🧾 Logs
+# ==============================
 *.log
 *.out
 *.err
 
-# Byte-compiled / optimized / DLL files
+# ==============================
+# 🧩 Build & Packaging
+# ==============================
 *.so
 *.egg
 *.egg-info/
@@ -33,16 +45,22 @@ sdist/
 wheels/
 pip-wheel-metadata/
 
-# IDEs
+# ==============================
+# 🧠 IDEs & Editors
+# ==============================
 .idea/
 .vscode/
 *.sublime-project
 *.sublime-workspace
 
-# Jupyter
+# ==============================
+# 📓 Jupyter
+# ==============================
 .ipynb_checkpoints
 
-# Testing / coverage
+# ==============================
+# 🧪 Testing / Coverage
+# ==============================
 htmlcov/
 .tox/
 .nox/
@@ -56,19 +74,27 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Pytype / type checkers
+# ==============================
+# 🧮 Type Checkers
+# ==============================
 .mypy_cache/
 .dmypy.json
 .pyre/
 .pytype/
 
-# Celery
+# ==============================
+# ⚙️ Celery
+# ==============================
 celerybeat-schedule
 celerybeat.pid
 
-# OS files
+# ==============================
+# 💻 OS-specific files
+# ==============================
 .DS_Store
 Thumbs.db
 
-# Render / deployment
-# Procfile, runtime.txt, and static/ are NOT ignored
+# ==============================
+# 🚀 Render / Deployment
+# ==============================
+# Allow Procfile, runtime.txt, static/, etc.

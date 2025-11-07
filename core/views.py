@@ -7,6 +7,7 @@ from .models import CustomUser
 from .serializers import RegisterSerializer, LoginSerializer, UserProfileSerializer
 
 
+
 class RegisterAPIView(generics.CreateAPIView):
     serializer_class = RegisterSerializer
     permission_classes = [permissions.AllowAny]

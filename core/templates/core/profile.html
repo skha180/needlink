@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ user.username|title }}'s Profile | NeedLink</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-teal-700 text-gray-100 font-[Poppins] overflow-x-hidden">
+
+  <!-- Navbar -->
+  <nav class="w-full flex justify-between items-center p-4 bg-white/10 backdrop-blur-md shadow-md border-b border-white/20">
+    <h1 class="text-2xl font-bold text-white tracking-wide">Need<span class="text-teal-400">Link</span></h1>
+    <div class="flex gap-4">
+      <a href="/" class="text-gray-300 hover:text-white transition">Home</a>
+      <a href="{% url 'logout' %}" class="bg-red-500/80 hover:bg-red-600 px-4 py-1 rounded-lg text-white text-sm font-medium transition">Logout</a>
+    </div>
+  </nav>
+
+  <!-- Profile Section -->
+  <section class="flex flex-col items-center mt-10 px-4">
+    <div id="profile-card" class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl shadow-2xl p-8 w-full max-w-2xl relative">
+      <!-- User Image -->
+      <div class="flex flex-col items-center text-center">
+        <div class="relative w-32 h-32 rounded-full border-4 border-teal-400 overflow-hidden shadow-md">
+          {% if user.profile_image %}
+            <img src="{{ user.profile_image.url }}" alt="Profile Picture" class="w-full h-full object-cover">
+          {% else %}
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed={{ user.username }}" alt="Avatar" class="w-full h-full object-cover">
+          {% endif %}
+        </div>
+
+        <h2 class="text-2xl font-semibold mt-4 text-white">{{ user.username|title }}</h2>
+        <p class="text-gray-300 text-sm">{{ user.email }}</p>
+
+        {% if user.user_type == "provider" %}
+          <span class="mt-2 bg-gradient-to-r from-teal-500 to-blue-500 px-3 py-1 rounded-full text-xs font-semibold">Service Provider</span>
+        {% else %}
+          <span class="mt-2 bg-gradient-to-r from-blue-500 to-teal-500 px-3 py-1 rounded-full text-xs font-semibold">Regular User</span>
+        {% endif %}
+      </div>
+
+      <!-- Info Section -->
+      <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div class="bg-white/10 rounded-xl p-4 border border-white/20">
+          <h3 class="text-teal-400 text-sm font-semibold">Full Name</h3>
+          <p class="text-white mt-1">{{ user.full_name|default:"Not provided" }}</p>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-4 border border-white/20">
+          <h3 class="text-teal-400 text-sm font-semibold">Phone</h3>
+          <p class="text-white mt-1">{{ user.phone|default:"Not provided" }}</p>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-4 border border-white/20">
+          <h3 class="text-teal-400 text-sm font-semibold">User Type</h3>
+          <p class="text-white mt-1 capitalize">{{ user.user_type }}</p>
+        </div>
+
+        <div class="bg-white/10 rounded-xl p-4 border border-white/20">
+          <h3 class="text-teal-400 text-sm font-semibold">Joined On</h3>
+          <p class="text-white mt-1">{{ user.date_joined|date:"F j, Y" }}</p>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="mt-10 flex justify-center gap-4">
+        <a href="{% url 'edit_profile' %}"
+           class="bg-gradient-to-r from-teal-500 to-blue-500 px-6 py-2 rounded-lg shadow-lg hover:shadow-xl transition font-semibold text-white">
+          Edit Profile
+        </a>
+        <a href="{% url 'logout' %}"
+           class="bg-red-500/80 hover:bg-red-600 px-6 py-2 rounded-lg shadow-lg transition font-semibold text-white">
+          Logout
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="mt-12 text-center text-gray-300 text-sm opacity-80 pb-6">
+    Powered by <span class="font-semibold text-white">DevniFy Devs</span>
+  </footer>
+
+  <!-- Animation -->
+  <script>
+    gsap.from("#profile-card", {
+      duration: 1,
+      y: 40,
+      opacity: 0,
+      ease: "power3.out"
+    });
+  </script>
+</body>
+</html>

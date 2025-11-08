@@ -1,7 +1,9 @@
-# core/urls/web_urls.py
 from django.urls import path
-from core.viewss.web_views import home
+from core.viewss import web_views
 
 urlpatterns = [
-    path("", home, name="core_home"),
+    path("register/", web_views.register_page, name="register_page"),
+    path("login/", web_views.login_page, name="login_page"),
+    path("profile/", web_views.profile_page, name="profile_page"),
+    path("edit-profile/", web_views.edit_profile, name="edit_profile"),  
 ]
